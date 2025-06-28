@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe Finder</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<header>
+  <h1>🍽️ Recipe Finder</h1>
+  <p>Search recipes by ingredients (e.g., tomato, cheese)</p>
+  <button id="darkModeToggle">🌙 Toggle Mode</button>
+</header>
+
+  <main>
+    <section class="search-section">
+      <input type="text" id="ingredientInput" class="js-ingredients" placeholder="Enter ingredients (comma separated)">
+      <button class="js-search">Search</button>
+     <button class="js-clear">Clear</button>
+     <button class="js-view-favorites">View Favorites</button>
+ 
+      <div id="loader" class="loader hidden"></div>
+
+    </section>
+
+    <section id="results" class="results-section">
+      <!-- Recipes will be inserted here -->
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Made with ❤️ using Spoonacular API</p>
+  </footer>
+
+  <script src="script/script.js"></script>
+  <script>
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+
+  // Save preference
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+// On page load, check theme preference
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+});
+
+  </script>
+</body>
+</html>
